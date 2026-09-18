@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+        }
+        #url-contain {
+            flex: 1;
+            min-width: 0;
+        }
+        #page-loader {
+            width: 1300px;
+            height: 525px;
+        }
+    </style>
+</head>
+<body>
+    <div id="request" class="container">
+        <input id="url-contain" placeholder="websource.new.com">
+        <button onclick="load_WebSource_tab()"> Load Web Tab using WebSource </button>
+    </div>
+    <p class="separator"></p>
+    <iframe id="page-loader" src=""></iframe>
+    <script>
+        let input = document.getElementById("url-contain");
+        input.value = "websource.new.com"
+        let webs = ["websource.new.com"]
+        let sources = {
+            "websource.new.com": "base.html"
+        }
+        // Complete web link is: websource.<weblink>.com
+        function load_WebSource_tab() {
+            let input = document.getElementById("url-contain");
+            let frame = document.getElementById("page-loader");
+            if (webs.includes(input.value)) {
+                frame.src = sources[input.value]
+            } else {
+                frame.src = "invalid_source.html"
+            }
+        }
+    </script>
+</body>
+</html>
